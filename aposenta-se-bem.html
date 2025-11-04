@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aposente-se Bem | Direito Previdenciário para Todos</title>
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    /* Cabeçalho */
+    header {
+      background: linear-gradient(135deg, #0A2463, #001B44);
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+    }
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    .logo {
+      width: 220px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    header p {
+      font-size: 1.15rem;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.95;
+    }
+    /* Navegação */
+    nav {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+    }
+    nav a {
+      padding: 15px 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #D4AF37;
+    }
+    /* Seções */
+    section {
+      padding: 70px 0;
+    }
+    section h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+      color: #D4AF37;
+    }
+    .section-subtitle {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      color: #555;
+      font-size: 1.1rem;
+    }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: center;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      width: 330px;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .card-content {
+      padding: 18px;
+    }
+    .card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+      color: #D4AF37;
+    }
+    .btn {
+      display: inline-block;
+      background: #D4AF37;
+      color: white;
+      padding: 11px 22px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 8px;
+      transition: 0.3s;
+      text-align: center;
+    }
+    .btn:hover {
+      background: #B38F1C;
+      transform: scale(1.03);
+    }
+
+    /* === NOVO: Estilos do Simulador === */
+    .simulador-section {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      padding: 30px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .simulador-section h3 {
+      color: #D4AF37;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 1.6rem;
+    }
+    .simulador-form label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #0A2463;
+    }
+    .simulador-form input, .simulador-form select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    .simulador-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: #D4AF37;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 25px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .simulador-btn:hover {
+      background: #B38F1C;
+    }
+    .simulador-resultado {
+      margin-top: 25px;
+      padding: 15px;
+      background-color: #F0F4FF;
+      border-left: 4px solid #D4AF37;
+      border-radius: 0 6px 6px 0;
+      display: none;
+    }
+    .simulador-resultado.mostrar {
+      display: block;
+    }
+    .simulador-resultado.ok {
+      color: #0A2463;
+      font-weight: 600;
+    }
+    .simulador-resultado.alerta {
+      color: #D97706;
+    }
+
+    /* Materiais */
+    .material-list {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .material-item {
+      margin-bottom: 18px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #eee;
+    }
+    .material-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    .material-item a {
+      color: #D4AF37;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .material-item a:hover {
+      text-decoration: underline;
+    }
+    .qr-container {
+      text-align: center;
+      margin: 25px 0;
+      padding: 15px;
+      background: #E8E9F0;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+    .qr-code {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto;
+      background: #F0F4FF;
+      border: 2px dashed #93C5FD;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #D4AF37;
+    }
+    /* Contato */
+    .contact {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .contact p {
+      margin-bottom: 18px;
+      font-size: 1.05rem;
+    }
+    /* Depoimentos */
+    .testimonial {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      font-style: italic;
+      padding: 18px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      margin-bottom: 18px;
+    }
+    .testimonial strong {
+      color: #D4AF37;
+    }
+    /* Notícias */
+    .news-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .news-item {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      overflow: hidden;
+      margin-bottom: 25px;
+      display: flex;
+      flex-direction: column;
+    }
+    .news-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background: #F0F4FF;
+      border-bottom: 1px solid #E0E7FF;
+    }
+    .news-date {
+      background: #D4AF37;
+      color: white;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .news-category {
+      background: #0A2463;
+      color: white;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .news-content {
+      padding: 20px;
+    }
+    .news-title {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: #0A2463;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .news-title:hover {
+      color: #D4AF37;
+      text-decoration: underline;
+    }
+    .news-excerpt {
+      color: #555;
+      margin-bottom: 15px;
+      line-height: 1.7;
+    }
+    .news-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .news-tag {
+      background: #E0E7FF;
+      color: #0A2463;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+    }
+    .news-source {
+      text-align: right;
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 10px;
+      font-style: italic;
+    }
+    .news-loading {
+      text-align: center;
+      padding: 30px;
+      font-size: 1.2rem;
+      color: #555;
+    }
+    .news-error {
+      background-color: #fef2f2;
+      border-left: 4px solid #ef4444;
+      padding: 15px;
+      border-radius: 0 4px 4px 0;
+      margin: 15px 0;
+    }
+    .refresh-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #0A2463;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    .refresh-btn:hover {
+      background: #001B44;
+      transform: translateY(-2px);
+    }
+    /* Modal do Guia */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.7);
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 20px;
+    }
+    .modal-content {
+      background-color: white;
+      margin: 30px auto;
+      padding: 25px;
+      border-radius: 10px;
+      max-width: 900px;
+      box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 28px;
+      cursor: pointer;
+      color: #666;
+      transition: 0.3s;
+      line-height: 1;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #F0F4FF;
+      border-radius: 50%;
+    }
+    .close-modal:hover {
+      color: #D4AF37;
+      background: #E0E7FF;
+      transform: scale(1.1);
+    }
+    .print-btn {
+      display: block;
+      background: #D4AF37;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 20px auto;
+      transition: 0.3s;
+      font-size: 1.05rem;
+    }
+    .print-btn:hover {
+      background: #B38F1C;
+    }
+    /* Estilos do Guia */
+    .guide-cover {
+      text-align: center;
+      padding: 25px 0;
+      border-bottom: 3px solid #D4AF37;
+      margin-bottom: 25px;
+    }
+    .guide-cover h1 {
+      font-size: 2.1rem;
+      color: #D4AF37;
+      margin: 12px 0;
+    }
+    .guide-logo {
+      background: #F0F4FF;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+      border: 3px solid #E0E7FF;
+    }
+    .guide h2 {
+      color: #D4AF37;
+      border-left: 4px solid #D4AF37;
+      padding-left: 10px;
+      margin: 1.3em 0;
+    }
+    .guide h3 {
+      color: #2563eb;
+      margin: 1.1em 0 0.5em;
+    }
+    .guide-highlight {
+      background: #F0F4FF;
+      border-left: 4px solid #D4AF37;
+      padding: 11px;
+      border-radius: 0 4px 4px 0;
+      margin: 1.1em 0;
+    }
+    .guide-checklist {
+      background: #F0F4FF;
+      padding: 11px;
+      border-radius: 8px;
+      margin: 1.1em 0;
+    }
+    .guide-checklist li {
+      margin-bottom: 7px;
+      list-style-type: none;
+      padding-left: 23px;
+      position: relative;
+    }
+    .guide-checklist li:before {
+      content: "✓";
+      color: #D4AF37;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    .guide-warning {
+      background: #FFF5E4;
+      border-left: 4px solid #EA580C;
+      padding: 11px;
+      border-radius: 0 4px 4px 0;
+      margin: 1.1em 0;
+    }
+    .guide table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.1em 0;
+    }
+    .guide th, .guide td {
+      border: 1px solid #ddd;
+      padding: 9px;
+      text-align: left;
+    }
+    .guide th {
+      background-color: #F0F4FF;
+      color: #D4AF37;
+    }
+    .guide-contact {
+      text-align: center;
+      background: #0A2463;
+      color: white;
+      padding: 13px;
+      border-radius: 8px;
+      margin: 18px 0;
+    }
+    .guide-footer {
+      text-align: center;
+      color: #666;
+      font-size: 0.85rem;
+      padding-top: 18px;
+      border-top: 1px solid #eee;
+      margin-top: 25px;
+    }
+    /* Footer */
+    footer {
+      background: #001B44;
+      color: white;
+      text-align: center;
+      padding: 25px 0;
+      margin-top: 40px;
+    }
+    footer p {
+      opacity: 0.8;
+      line-height: 1.5;
+    }
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .placeholder {
+      background: #E0E7FF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #D4AF37;
+      font-weight: bold;
+    }
+    @media (max-width: 768px) {
+      .modal-content {
+        margin: 15px;
+        padding: 12px;
+      }
+      .guide-cover h1 {
+        font-size: 1.7rem;
+      }
+      section {
+        padding: 50px 0;
+      }
+      header h1 {
+        font-size: 2.1rem;
+      }
+      .card {
+        width: 100%;
+      }
+      .news-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .news-category {
+        margin-top: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <div class="container">
+      <div class="logo-container">
+        <img src="logo.png" alt="Logo Aposente-se Bem" class="logo">
+        <h1>Aposente-se Bem</h1>
+        <p>Direito previdenciário para todos — sem juridiquês, sem complicação.</p>
+      </div>
+    </div>
+  </header>
+  <!-- Navegação -->
+  <nav>
+    <ul>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#simulador">Simulador</a></li> <!-- Novo item -->
+      <li><a href="#noticias">Notícias</a></li>
+      <li><a href="#atividades">Atividades</a></li>
+      <li><a href="#materiais">Materiais</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+  <!-- Sobre -->
+  <section id="sobre">
+    <div class="container">
+      <h2>Quem Somos</h2>
+      <div class="card-container">
+        <div class="card">
+          <div class="placeholder" style="height: 180px;">Foto da Comunidade</div>
+          <div class="card-content">
+            <h3>Nosso Projeto</h3>
+            <p>O Aposente-se Bem nasceu para ajudar pessoas comuns a entenderem seus direitos previdenciários, evitarem erros e planejarem uma aposentadoria digna — sem juridiquês, sem complicação.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="placeholder" style="height: 180px;">Equipe Voluntária</div>
+          <div class="card-content">
+            <h3>Nossa Missão</h3>
+            <p>Acreditamos que todo trabalhador, mesmo sem carteira assinada, merece proteção. Oferecemos orientação gratuita para autônomos, informais, mulheres e jovens.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === NOVA SEÇÃO: Simulador de Aposentadoria === -->
+  <section id="simulador" style="background-color: #F1F5F9;">
+    <div class="container">
+      <h2>Simule sua Aposentadoria</h2>
+      <p class="section-subtitle">
+        Descubra se você já tem direito à aposentadoria com base nas regras do INSS em 2025.
+      </p>
+      <div class="simulador-section">
+        <div class="simulador-form">
+          <label for="sexo">Sexo:</label>
+          <select id="sexo">
+            <option value="F">Feminino</option>
+            <option value="M">Masculino</option>
+          </select>
+
+          <label for="nascimento">Data de Nascimento:</label>
+          <input type="date" id="nascimento" />
+
+          <label for="inicioContrib">Data de Início da Contribuição:</label>
+          <input type="date" id="inicioContrib" />
+
+          <button class="simulador-btn" onclick="calcularAposentadoria()">Calcular minha Aposentadoria</button>
+
+          <div id="resultado" class="simulador-resultado"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Notícias -->
+  <section id="noticias" style="background-color: #F1F5F9;">
+    <div class="container">
+      <h2>Últimas Notícias</h2>
+      <p class="section-subtitle">
+        Mantenha-se atualizado com as últimas notícias sobre previdência social. 
+        As informações são atualizadas automaticamente com base no site oficial do Ministério da Previdência Social.
+      </p>
+      <div class="news-container" id="news-container">
+        <div class="news-loading" id="news-loading">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="animation: spin 2s linear infinite; margin-right: 10px;">
+            <path d="M12 2C6.477 2 2 6.477 2 12H5C5 8.134 8.134 5 12 5V2Z" fill="#D4AF37"/>
+            <path d="M12 22C17.523 22 22 17.523 22 12H19C19 15.866 15.866 19 12 19V22Z" fill="#0A2463"/>
+          </svg>
+          Carregando as últimas notícias...
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 30px;">
+        <a href="https://www.gov.br/previdencia/pt-br/noticias" class="btn" target="_blank">
+          Ver mais notícias no site oficial
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- Atividades -->
+  <section id="atividades" style="background-color: #E0E7FF;">
+    <div class="container">
+      <h2>Nossas Atividades</h2>
+      <div class="card-container">
+        <div class="card">
+          <div class="placeholder" style="height: 180px;">Oficinas</div>
+          <div class="card-content">
+            <h3>Oficinas Comunitárias</h3>
+            <p>Aprendizado sobre tipos de aposentadoria, tempo de contribuição, direitos das mulheres e como agendar no Meu INSS.</p>
+            <a href="#contato" class="btn">Participe</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="placeholder" style="height: 180px;">Plantão Jurídico</div>
+          <div class="card-content">
+            <h3>Plantão Jurídico</h3>
+            <p>Atendimento individual gratuito com estudantes de direito e advogados voluntários para tirar dúvidas e simular aposentadoria.</p>
+            <a href="#contato" class="btn">Agende</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="placeholder" style="height: 180px;">Kit Informativo</div>
+          <div class="card-content">
+            <h3>Kit "Aposente-se Bem"</h3>
+            <p>Material gratuito com checklist, tabelas atualizadas e simulador de aposentadoria para você levar e compartilhar.</p>
+            <a href="#materiais" class="btn">Baixe já</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Materiais (COM OS DOIS ITENS REMOVIDOS) -->
+  <section id="materiais">
+    <div class="container">
+      <h2>Materiais Gratuitos</h2>
+      <div class="qr-container">
+        <h3>📱 Acesso Rápido ao Guia</h3>
+        <p>Escaneie o QR Code para visualizar o guia em seu celular</p>
+        <div class="qr-code">
+          QR CODE AQUI
+        </div>
+        <p style="margin-top: 10px; font-size: 0.9rem; color: #666;">
+          (Este é um placeholder - substitua pela imagem real do QR Code)
+        </p>
+      </div>
+      <div class="material-list">
+        <div class="material-item">
+          <h3>📘 Guia Rápido: Como se Aposentar em 2025</h3>
+          <p>Entenda as regras atuais de forma simples e com exemplos reais.</p>
+          <a onclick="openGuideModal()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 15L12 7M12 7L9 10M12 7L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M17 19H7C5.89543 19 5 18.1046 5 17V7C5 5.89543 5.89543 5 7 5H12.5858C12.851 5 13.1054 5.10536 13.2929 5.29289L16.7071 8.70711C16.8946 8.89464 17 9.149 17 9.41421V19Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+            Visualizar Guia Completo
+          </a>
+        </div>
+        <div class="material-item">
+          <h3>🎥 Vídeo: Como agendar no Meu INSS</h3>
+          <p>Tutorial passo a passo para usar o app sem dificuldades.</p>
+           <a href="https://www.youtube.com/watch?v=vqv2N8gbURY"
+          <a href="#">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 15L12 7M12 7L9 10M12 7L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M17 19H7C5.89543 19 5 18.1046 5 17V7C5 5.89543 5.89543 5 7 5H12.5858C12.851 5 13.1054 5.10536 13.2929 5.29289L16.7071 8.70711C16.8946 8.89464 17 9.149 17 9.41421V19Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+            Assistir Vídeo
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Depoimentos -->
+  <section style="background-color: #F1F5F9;">
+    <div class="container">
+      <h2>Histórias Reais</h2>
+      <div class="testimonial">
+        <p>"Trabalhei 30 anos como diarista e achava que não tinha direito. Graças ao Aposente-se Bem, consegui comprovar tempo de serviço e agora vou me aposentar!"</p>
+        <strong>— Dona Maria, 63 anos</strong>
+      </div>
+      <div class="testimonial">
+        <p>"Nem sabia que como MEI eu podia escolher o valor da contribuição. Isso vai aumentar minha aposentadoria!"</p>
+        <strong>— João, 45 anos, entregador</strong>
+      </div>
+    </div>
+  </section>
+  <!-- Contato -->
+  <section id="contato" style="background-color: #001B44; color: white;">
+    <div class="container">
+      <h2 style="color: white;">Fale Conosco</h2>
+      <div class="contact">
+        <p>📍 Atendemos no Centro Comunitário Esperança<br>Rua das Flores, 123, Bairro União</p>
+        <p>📞 WhatsApp: <a href="https://wa.me/5511999999999" style="color: #fff; text-decoration: underline;">(11) 99999-9999</a></p>
+        <p>📧 Email: contato@aposentesebem.org</p>
+        <p>📷 Siga no Instagram: <strong>@aposentesebem_sp</strong></p>
+        <p>Quer ser voluntário ou parceiro? Escreva para nós!</p>
+        <a href="https://wa.me/5511999999999" class="btn" style="background: white; color: #D4AF37; width: auto; display: inline-block;">Entrar em contato</a>
+      </div>
+    </div>
+  </section>
+  <!-- Rodapé -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <p>&copy; 2025 Aposente-se Bem. Todos os direitos reservados.</p>
+        <p>Um projeto comunitário de educação previdenciária.</p>
+        <div style="text-align: center; margin-top: 15px;">
+          <p style="margin-bottom: 8px; font-weight: 500;">Acesse nosso guia em qualquer lugar</p>
+          <div class="qr-code" style="width: 150px; height: 150px; margin: 0 auto;">
+            QR CODE AQUI
+          </div>
+          <p style="margin-top: 8px; font-size: 0.85rem;">Escaneie para visualizar o guia rápido</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Modal do Guia -->
+  <div id="guideModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeGuideModal()">&times;</span>
+      <div class="guide">
+        <div class="guide-cover">
+          <div class="guide-logo">
+            <span style="font-size: 36px; color: #D4AF37;">👵</span>
+          </div>
+          <h1>APOSENTE-SE BEM</h1>
+          <p><strong>Guia Rápido: Como se Aposentar em 2025</strong></p>
+          <p style="font-size: 1rem; color: #666;">Direito previdenciário explicado de forma simples e prática — sem juridiquês</p>
+        </div>
+        <h2>Por que este guia?</h2>
+        <p>Muitas pessoas trabalham a vida inteira, mas perdem o direito à aposentadoria por falta de informação. Este guia foi criado pelo projeto <strong>Aposente-se Bem</strong> para ajudar você a entender:</p>
+        <div class="guide-highlight">
+          • Quais são os tipos de aposentadoria em 2025<br>
+          • Como calcular seu tempo de contribuição<br>
+          • Documentos necessários para requerer<br>
+          • Erros comuns que você deve evitar<br>
+          • Passo a passo para agendar no Meu INSS
+        </div>
+        <h2>Tipos de Aposentadoria em 2025</h2>
+        <h3>1. Aposentadoria por Idade</h3>
+        <p><strong>Para homens:</strong> 65 anos de idade + 20 anos de contribuição<br>
+        <strong>Para mulheres:</strong> 62 anos de idade + 15 anos de contribuição</p>
+        <div class="guide-warning">
+          <strong>Atenção:</strong> Mesmo trabalhadores informais (diaristas, ambulantes) podem contribuir como segurado facultativo e acumular tempo!
+        </div>
+        <h3>2. Aposentadoria por Tempo de Contribuição</h3>
+        <table>
+          <tr>
+            <th>Tipo</th>
+            <th>Requisito (2025)</th>
+          </tr>
+          <tr>
+            <td>Aposentadoria 100% (Integral)</td>
+            <td>Homens: 35 anos | Mulheres: 30 anos</td>
+          </tr>
+          <tr>
+            <td>Aposentadoria Proporcional (regra antiga)</td>
+            <td>Homens: 30 anos + 5 anos extras | Mulheres: 25 anos + 5 anos extras</td>
+          </tr>
+        </table>
+        <h3>3. Aposentadoria Especial</h3>
+        <p>Para profissões com exposição a riscos (ex: operador de máquinas, enfermeiro, professor):</p>
+        <div class="guide-checklist">
+          <li>Homens: 25 anos de atividade especial</li>
+          <li>Mulheres: 25 anos de atividade especial</li>
+          <li>Necessário comprovar exposição a agentes nocivos</li>
+        </div>
+        <h2>Como Solicitar sua Aposentadoria</h2>
+        <h3>Passo 1: Verifique seus direitos</h3>
+        <p>Acesse o <strong>Meu INSS</strong> (app ou site) e confira:</p>
+        <div class="guide-checklist">
+          <li>Seu tempo de contribuição registrado</li>
+          <li>Se faltam documentos para comprovar atividades</li>
+          <li>Qual tipo de aposentadoria você já tem direito</li>
+        </div>
+        <h3>Passo 2: Reúna os documentos</h3>
+        <div class="guide-checklist">
+          <li>RG e CPF</li>
+          <li>Carteira de Trabalho (física ou digital)</li>
+          <li>Holerites ou comprovantes de contribuição (para autônomos)</li>
+          <li>Documentos específicos para aposentadoria especial (PPP, LTCAT)</li>
+        </div>
+        <h3>Passo 3: Agende no Meu INSS</h3>
+        <ol>
+          <li>Baixe o app <strong>Meu INSS</strong> (Android/iOS)</li>
+          <li>Clique em "Agendamentos"</li>
+          <li>Selecione "Aposentadoria" > "Requerimento inicial"</li>
+          <li>Escolha data e horário disponíveis</li>
+        </ol>
+        <h2>5 Erros que Você DEVE Evitar</h2>
+        <div class="guide-warning">
+          <strong>Erro #1:</strong> Parar de contribuir antes de completar o tempo necessário<br>
+          <em>Solução:</em> Continue contribuindo mesmo como MEI ou segurado facultativo.
+        </div>
+        <div class="guide-warning">
+          <strong>Erro #2:</strong> Não comprovar atividades informais<br>
+          <em>Solução:</em> Use recibos, testemunhas ou documentos alternativos.
+        </div>
+        <div class="guide-warning">
+          <strong>Erro #3:</strong> Acreditar que só quem tem carteira pode se aposentar<br>
+          <em>Solução:</em> Autônomos e informais podem contribuir diretamente com o INSS.
+        </div>
+        <h2>Dicas para Grupos Específicos</h2>
+        <h3>👩 Mulheres</h3>
+        <p>Você pode ter direito à aposentadoria mesmo sem trabalhar com carteira assinada:</p>
+        <div class="guide-highlight">
+          • Tempo de gestação conta para aposentadoria<br>
+          • Licença-maternidade é contada como contribuição<br>
+          • Mulheres rurais têm regras especiais (60 anos + 15 anos de atividade)
+        </div>
+        <h3>🔧 Autônomos e MEI</h3>
+        <p>Escolha seu salário de contribuição com inteligência:</p>
+        <table>
+          <tr>
+            <th>Nível</th>
+            <th>Contribuição Mensal</th>
+            <th>Vantagem</th>
+          </tr>
+          <tr>
+            <td>Mínimo (INSS)</td>
+            <td>R$ 188,00</td>
+            <td>Garante direito básico</td>
+          </tr>
+          <tr>
+            <td>Recomendado</td>
+            <td>R$ 450,00 a R$ 750,00</td>
+            <td>Aposentadoria mais alta</td>
+          </tr>
+        </table>
+        <h2>Checklist Antes de Solicitar</h2>
+        <div class="guide-checklist">
+          <li>Verifiquei meu tempo de contribuição no Meu INSS</li>
+          <li>Reuni todos os documentos necessários</li>
+          <li>Calculei qual tipo de aposentadoria me beneficia mais</li>
+          <li>Agendei no app com antecedência</li>
+          <li>Levei cópias e originais para o atendimento</li>
+        </div>
+        <div class="guide-contact">
+          <h3>PRECISA DE AJUDA?</h3>
+          <p>O projeto <strong>Aposente-se Bem</strong> oferece:</p>
+          <p>• Plantão jurídico gratuito<br>• Simulador de aposentadoria<br>• Orientação personalizada</p>
+          <p><strong>WhatsApp: (11) 99999-9999</strong><br>
+          <em>Atendimento comunitário em [Seu Bairro/Cidade]</em></p>
+        </div>
+        <button class="print-btn" onclick="window.print()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 8px;">
+            <path d="M6 9V2H18V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6 15H4C3.46957 15 2.96086 15.2107 2.58579 15.5858C2.21071 15.9609 2 16.4696 2 17V21C2 21.5304 2.21071 22.0391 2.58579 22.4142C2.96086 22.7893 3.46957 23 4 23H20C20.5304 23 21.0391 22.7893 21.4142 22.4142C21.7893 22.0391 22 21.5304 22 21V17C22 16.4696 21.7893 15.9609 21.4142 15.5858C21.0391 15.2107 20.5304 15 20 15H18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 13V7C16 6.46957 15.7893 5.96086 15.4142 5.58579C15.0391 5.21071 14.5304 5 14 5H10C9.46957 5 8.96086 5.21071 8.58579 5.58579C8.21071 5.96086 8 6.46957 8 7V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Salvar como PDF
+        </button>
+        <div class="guide-footer">
+          <p>Projeto "Aposente-se Bem" | Educação previdenciária para todos</p>
+          <p>Este material é gratuito e pode ser compartilhado livremente</p>
+          <p>www.aposentesebem.org | @aposentesebem_sp</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // === NOVO: Função do simulador ===
+    function calcularAposentadoria() {
+      const sexo = document.getElementById("sexo").value;
+      const nasc = new Date(document.getElementById("nascimento").value);
+      const inicio = new Date(document.getElementById("inicioContrib").value);
+      const hoje = new Date();
+
+      if (isNaN(nasc) || isNaN(inicio) || inicio > hoje || nasc > hoje) {
+        alert("Por favor, preencha datas válidas e coerentes.");
+        return;
+      }
+
+      const idade = Math.floor((hoje - nasc) / (365.25 * 24 * 60 * 60 * 1000));
+      const tempoContrib = Math.floor((hoje - inicio) / (365.25 * 24 * 60 * 60 * 1000));
+      const pontos = idade + tempoContrib;
+
+      const idadeMin = sexo === "F" ? 62 : 65;
+      const tempoMin = sexo === "F" ? 15 : 20;
+      const pontosMin = sexo === "F" ? 88 : 98;
+
+      let resultadoHtml = `<h3>📊 Resultado da Simulação</h3>`;
+      resultadoHtml += `<p><strong>Idade atual:</strong> ${idade} anos</p>`;
+      resultadoHtml += `<p><strong>Tempo contribuído:</strong> ${tempoContrib} anos</p>`;
+      resultadoHtml += `<p><strong>Pontos (idade + tempo):</strong> ${pontos}</p>`;
+
+      let podeAposentar = false;
+
+      if (idade >= idadeMin && tempoContrib >= tempoMin) {
+        resultadoHtml += `<p class="ok">✅ Você já pode se aposentar pela <strong>regra atual (idade mínima)</strong>.</p>`;
+        podeAposentar = true;
+      } else {
+        const faltaIdade = idadeMin - idade;
+        const faltaTempo = tempoMin - tempoContrib;
+        resultadoHtml += `<p class="alerta">❌ Ainda não cumpre a regra atual.<br>`;
+        if (faltaIdade > 0) resultadoHtml += `Faltam ${faltaIdade} ano(s) de idade.<br>`;
+        if (faltaTempo > 0) resultadoHtml += `Faltam ${faltaTempo} ano(s) de contribuição.</p>`;
+      }
+
+      if (tempoContrib >= tempoMin && pontos >= pontosMin) {
+        resultadoHtml += `<p class="ok">✅ Você também pode se aposentar pela <strong>regra de transição por pontos (${pontosMin})</strong>.</p>`;
+        podeAposentar = true;
+      } else if (tempoContrib >= tempoMin) {
+        const faltaPontos = pontosMin - pontos;
+        if (faltaPontos > 0) {
+          resultadoHtml += `<p class="alerta">⚠️ Faltam ${faltaPontos} ponto(s) para a regra de transição.</p>`;
+        }
+      }
+
+      if (!podeAposentar) {
+        resultadoHtml += `<p>💡 Dica: Acesse o <a href="https://meu.inss.gov.br" target="_blank">Meu INSS</a> para verificar seu extrato (CNIS) completo.</p>`;
+      }
+
+      const resultadoDiv = document.getElementById("resultado");
+      resultadoDiv.innerHTML = resultadoHtml;
+      resultadoDiv.classList.add("mostrar");
+    }
+
+    // === Restante do JavaScript original ===
+    function formatDate(dateString) {
+      const [day, month, year] = dateString.split('/');
+      return `${day}/${month}/${year.substring(2)}`;
+    }
+    function extractNews(html) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      const newsItems = [];
+      const newsElements = doc.querySelectorAll('.news-item');
+      if (newsElements.length === 0) {
+        const newsRows = doc.querySelectorAll('.news-list .row');
+        newsRows.forEach(row => {
+          const titleElement = row.querySelector('h3 a, h4 a');
+          const dateElement = row.querySelector('.news-date');
+          const categoryElement = row.querySelector('.news-category');
+          const excerptElement = row.querySelector('.news-excerpt');
+          const tagsElements = row.querySelectorAll('.news-tag');
+          if (titleElement && dateElement) {
+            const title = titleElement.textContent.trim();
+            const date = dateElement.textContent.trim();
+            const category = categoryElement ? categoryElement.textContent.trim() : 'INSS';
+            const excerpt = excerptElement ? excerptElement.textContent.trim() : '';
+            const tags = [];
+            tagsElements.forEach(tag => {
+              tags.push(tag.textContent.trim());
+            });
+            newsItems.push({
+              title,
+              date,
+              category,
+              excerpt,
+              tags
+            });
+          }
+        });
+      }
+      if (newsItems.length === 0) {
+        return [
+          {
+            title: "Programa de revisão de benefícios é aprovado no Senado Federal",
+            date: "12/08/2025",
+            category: "REVISÃO",
+            excerpt: "Ações devem reduzir a fila do INSS",
+            tags: ["INSS", "Revisão de Benefícios", "Senado Federal"]
+          },
+          {
+            title: "Ministro destaca a grandeza da Previdência Social durante reunião do Conaprev: 'reduz desigualdades e combate a pobreza'",
+            date: "12/08/2025",
+            category: "REGIMES PRÓPRIOS",
+            excerpt: "Wolney Queiroz participou da 82ª Reunião Ordinária do Conselho Nacional dos Dirigentes de Regimes Próprios de Previdência Social, em São Paulo",
+            tags: []
+          },
+          {
+            title: "Governo Federal já devolveu mais de R$ 1 bilhão a aposentados e pensionistas",
+            date: "11/08/2025",
+            category: "INSS",
+            excerpt: "Quem ainda não fez a adesão ao acordo deve acessar o aplicativo Meu INSS ou ir a uma agência dos Correios. O procedimento é gratuito, simples e não exige envio de documentos",
+            tags: ["INSS", "Ressarcimento", "Aposentados e Pensionistas", "Descontos Indevidos"]
+          },
+          {
+            title: "Operação combate fraude previdenciária no Rio Grande do Sul",
+            date: "11/08/2025",
+            category: "FORÇA-TAREFA",
+            excerpt: "Criminoso recebia benefício de segurado falecido de forma irregular. Prejuízo chega a R$ 100 mil",
+            tags: ["Combate a Fraudes", "Força-Tarefa", "Rio Grande do Sul"]
+          },
+          {
+            title: "Previdência Social regulariza prédios para serviços de saúde pública e doa veículos no Rio Grande do Sul",
+            date: "08/08/2025",
+            category: "INSTITUCIONAL",
+            excerpt: "Ministro Wolney Queiroz assinou a transferência dos imóveis em Canoas e Porto Alegre, onde também se reuniu com equipes da perícia médica, inteligência previdenciária e Conselho de Recursos do estado",
+            tags: ["Rio Grande do Sul"]
+          }
+        ];
+      }
+      return newsItems.slice(0, 5);
+    }
+    function renderNews(news) {
+      const newsContainer = document.getElementById('news-container');
+      let html = '';
+      if (!news || news.length === 0) {
+        html = `
+          <div class="news-error">
+            <p>Não foi possível carregar as notícias no momento. Tente novamente mais tarde.</p>
+            <button class="refresh-btn" onclick="loadNews()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M17 7V4H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Atualizar
+            </button>
+          </div>
+        `;
+        newsContainer.innerHTML = html;
+        return;
+      }
+      news.forEach(item => {
+        let tagsHtml = '';
+        if (item.tags && item.tags.length > 0) {
+          item.tags.forEach(tag => {
+            tagsHtml += `<span class="news-tag">${tag}</span>`;
+          });
+        }
+        html += `
+          <div class="news-item">
+            <div class="news-header">
+              <div class="news-date">${item.date}</div>
+              <div class="news-category">${item.category}</div>
+            </div>
+            <div class="news-content">
+              <h3 class="news-title" onclick="window.open('https://www.gov.br/previdencia/pt-br/noticias', '_blank')">
+                ${item.title}
+              </h3>
+              <p class="news-excerpt">${item.excerpt}</p>
+              ${tagsHtml ? `<div class="news-tags">${tagsHtml}</div>` : ''}
+              <div class="news-source">Fonte: www.gov.br/previdencia</div>
+            </div>
+          </div>
+        `;
+      });
+      newsContainer.innerHTML = html;
+    }
+    async function loadNews() {
+      const newsContainer = document.getElementById('news-container');
+      newsContainer.innerHTML = `
+        <div class="news-loading" id="news-loading">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="animation: spin 2s linear infinite; margin-right: 10px;">
+            <path d="M12 2C6.477 2 2 6.477 2 12H5C5 8.134 8.134 5 12 5V2Z" fill="#D4AF37"/>
+            <path d="M12 22C17.523 22 22 17.523 22 12H19C19 15.866 15.866 19 12 19V22Z" fill="#0A2463"/>
+          </svg>
+          Carregando as últimas notícias...
+        </div>
+      `;
+      try {
+        const corsProxy = 'https://api.allorigins.win/raw?url=';
+        const targetUrl = encodeURIComponent('https://www.gov.br/previdencia/pt-br/noticias');
+        const response = await fetch(corsProxy + targetUrl);
+        if (!response.ok) throw new Error('Falha ao carregar notícias');
+        const html = await response.text();
+        const news = extractNews(html);
+        renderNews(news);
+        localStorage.setItem('previdenciaNews', JSON.stringify(news));
+        localStorage.setItem('previdenciaNewsTimestamp', Date.now().toString());
+      } catch (error) {
+        console.error('Erro ao carregar notícias:', error);
+        const cachedNews = localStorage.getItem('previdenciaNews');
+        const timestamp = localStorage.getItem('previdenciaNewsTimestamp');
+        if (cachedNews && timestamp && (Date.now() - parseInt(timestamp) < 24 * 60 * 60 * 1000)) {
+          renderNews(JSON.parse(cachedNews));
+          const newsContainer = document.getElementById('news-container');
+          const currentHtml = newsContainer.innerHTML;
+          newsContainer.innerHTML = `
+            <div class="news-error" style="background-color: #fffbeb; border-left-color: #f59f00;">
+              <p>Mostrando notícias em cache (última atualização há ${(Date.now() - parseInt(timestamp)) / (60 * 60 * 1000).toFixed(1)} horas). <button class="refresh-btn" style="background: #f59f00; margin-left: 10px;" onclick="loadNews()">Atualizar</button></p>
+            </div>
+            ${currentHtml}
+          `;
+        } else {
+          newsContainer.innerHTML = `
+            <div class="news-error">
+              <p>Não foi possível carregar as notícias no momento. Verifique sua conexão com a internet.</p>
+              <button class="refresh-btn" onclick="loadNews()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M17 7V4H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Tentar novamente
+              </button>
+            </div>
+          `;
+        }
+      }
+    }
+    function init() {
+      loadNews();
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+    window.addEventListener('load', init);
+    function openGuideModal() {
+      document.getElementById('guideModal').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeGuideModal() {
+      document.getElementById('guideModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+    window.onclick = function(event) {
+      const modal = document.getElementById('guideModal');
+      if (event.target == modal) {
+        closeGuideModal();
+      }
+    };
+    document.addEventListener('keydown', function(event) {
+      if (event.key === "Escape") {
+        closeGuideModal();
+      }
+    });
+  </script>
+</body>
+</html>
